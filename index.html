@@ -4,7 +4,10 @@
         <script>
             grist.ready({
                 requiredAccess: "full",
-                columns: [{ name: "Attachment" }, { name: "Url" }],
+                columns: [
+                    { name: "Attachment", title: "Attachment source" },
+                    { name: "Url", title: "Generated URL target" },
+                ],
             });
             grist.onRecords(async (records, mappings) => {
                 const tokenInfo = await grist.docApi.getAccessToken({
