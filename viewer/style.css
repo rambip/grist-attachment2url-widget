@@ -1,59 +1,25 @@
-:root {
-    color-scheme: light dark;
-}
-html,
-body {
-    height: 100%;
-    margin: 0;
-}
-body {
-    font-family:
-        system-ui,
-        -apple-system,
-        Segoe UI,
-        Roboto,
-        Ubuntu,
-        "Helvetica Neue",
-        Arial,
-        sans-serif;
-    display: grid;
-    place-items: center;
-    background: canvas;
-    color: canvastext;
-}
 #wrap {
-    position: relative;
     width: 100%;
     height: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 #img {
-    max-width: 80%;
-    max-height: 80%;
+    width: 100%;
+    height: auto;
     object-fit: contain;
     object-position: center;
     display: none;
-    margin: 20px 0;
+    margin: 10px 0;
+    max-width: 100%;
+    max-height: 80vh;
 }
 
 #prevBtn,
 #nextBtn {
-    margin: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 5px 20px;
+    font-size: 18px;
     cursor: pointer;
-}
-
-#prevBtn {
-    order: 1;
-}
-
-#nextBtn {
-    order: 3;
-}
-
-#img {
-    order: 2;
 }
