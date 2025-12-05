@@ -1,6 +1,6 @@
 // Request mapping for one Attachments-type column.
 grist.ready({
-  requiredAccess: "read table",
+  requiredAccess: "full table",
   columns: [
     {
       name: "Attachment", // logical name used inside the widget
