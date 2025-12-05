@@ -17,8 +17,7 @@ const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
 
 let currentIndex = 0;
-
-alert(img);
+let imageUrls = [];
 
 async function buildAttachmentUrl(attId) {
   // Short-lived, safe URL parts for the current document
@@ -28,63 +27,58 @@ async function buildAttachmentUrl(attId) {
   return `${baseUrl}/attachments/${attId}/download?auth=${token}`;
 }
 
+function updateNavigationButtons() {
+  prevBtn.disabled = currentIndex <= 0;
+  nextBtn.disabled = currentIndex >= imageUrls.length - 1;
+}
+
 function showMessage(text) {
   img.style.display = "none";
   msg.textContent = text;
+  prevBtn.disabled = true;
+  nextBtn.disabled = true;
 }
 
 async function render(record) {
   const mapped = grist.mapColumnNames(record) || {};
   const list = mapped.Attachment;
 
-  // Attachment cells are arrays of IDs; show the first if present.
-  currentIndex = 0;
-  if (Array.isArray(list) && list.length) {
-    try {
-      const url = await buildAttachmentUrl(list[currentIndex]);
-      img.src = url;
-      img.alt = `Attachment ${list[currentIndex]}`;
-      img.style.display = "block";
-      msg.textContent = "";
-      updateButtons(list);
-    } catch (err) {
-      console.error("Attachment load error:", err);
-      showMessage("Unable to load image (check access or file type).");
-    }
+  if (!Array.isArray(list) || list.length === 0) {
+    showMessage("No attachments found.");
+    return;
+  }
+
+  imageUrls = await Promise.all(
+    list.map(async (attId) => await buildAttachmentUrl(attId)),
+  );
+
+  if (imageUrls.length > 0) {
+    currentIndex = 0;
+    img.src = imageUrls[currentIndex];
+    img.style.display = "block";
+    msg.textContent = "";
+    updateNavigationButtons();
   } else {
-    showMessage("X"); //whatever you want to show if nothing
+    showMessage("No valid images to display.");
   }
 }
 
-function updateButtons(list) {
-  prevBtn.disabled = currentIndex === 0;
-  nextBtn.disabled = currentIndex === list.length - 1;
-}
-
-async function changeAttachment(direction) {
-  const list = grist.getRecord()
-    ? grist.mapColumnNames(grist.getRecord()).Attachment
-    : [];
-  if (Array.isArray(list) && list.length) {
-    currentIndex += direction;
-    if (currentIndex >= 0 && currentIndex < list.length) {
-      try {
-        const url = await buildAttachmentUrl(list[currentIndex]);
-        img.src = url;
-        img.alt = `Attachment ${list[currentIndex]}`;
-        img.style.display = "block";
-        msg.textContent = "";
-        updateButtons(list);
-      } catch (err) {
-        console.error("Attachment load error:", err);
-        showMessage("Unable to load image (check access or file type).");
-      }
-    }
+// Update when the selected record changes.
+prevBtn.addEventListener("click", () => {
+  if (currentIndex > 0) {
+    currentIndex--;
+    img.src = imageUrls[currentIndex];
+    updateNavigationButtons();
   }
-}
+});
 
-prevBtn.addEventListener("click", () => changeAttachment(-1));
-nextBtn.addEventListener("click", () => changeAttachment(1));
+nextBtn.addEventListener("click", () => {
+  if (currentIndex < imageUrls.length - 1) {
+    currentIndex++;
+    img.src = imageUrls[currentIndex];
+    updateNavigationButtons();
+  }
+});
 
 // Update when the selected record changes.
 grist.onRecord(render);

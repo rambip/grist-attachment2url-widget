@@ -30,9 +30,30 @@ body {
     align-items: center;
 }
 #img {
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 80%;
+    max-height: 80%;
     object-fit: contain;
     object-position: center;
     display: none;
+    margin: 20px 0;
+}
+
+#prevBtn,
+#nextBtn {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#prevBtn {
+    order: 1;
+}
+
+#nextBtn {
+    order: 3;
+}
+
+#img {
+    order: 2;
 }
