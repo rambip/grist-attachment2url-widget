@@ -1,5 +1,5 @@
 grist.ready({
-  requiredAccess: "full",
+  requiredAccess: "read table",
   columns: [
     { name: "Attachment", title: "Attachment source" },
     { name: "Url", title: "Generated URL target" },
