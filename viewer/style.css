@@ -1,0 +1,35 @@
+:root {
+    color-scheme: light dark;
+}
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+body {
+    font-family:
+        system-ui,
+        -apple-system,
+        Segoe UI,
+        Roboto,
+        Ubuntu,
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+    display: grid;
+    place-items: center;
+    background: canvas;
+    color: canvastext;
+}
+#wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+#img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: none;
+}
