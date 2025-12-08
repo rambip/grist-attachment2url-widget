@@ -34,6 +34,12 @@ To install a custom widget, go read [the grist documentation on widget](https://
 
 This widget shows a view of all attachments in your column.
 
+Right now, it supports:
+- All images formats
+- PDFs
+
+And you can't use buttons to display all the attachments for each columns.
+
 Use this link: 
 
 `https://rambip.github.io/grist-attachment-widgets/viewer`
@@ -82,3 +88,7 @@ There is quite a lot of discussion around this topic on the french and internati
 
 - [inspiration for attachment viewer](https://community.getgrist.com/t/attachment-viewer-widget-needed/11558/3)
 - [grist API funciton that makes it work](https://support.getgrist.com/code/modules/grist_plugin_api/#getaccesstoken)
+
+# TODO
+
+- add a pdf viewer to the attachment viewer widget

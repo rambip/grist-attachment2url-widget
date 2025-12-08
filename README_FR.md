@@ -30,7 +30,13 @@ Pour installer un de ces widgets, vous pouvez vous référer à [la documentatio
 
 ## View attachments in Grist
 
-Ce widget affiche tous les documents dans la colonne séléctionnée:
+Ce widget affiche tous les documents dans la colonne séléctionnée.
+
+Il permet de visionner:
+- des images
+- des PDFs
+
+Et il n'est pas limité à un seul document, il est possible de naviguer parmi plusieurs pièces jointes.
 
 Lien à copier-coller: 
 
