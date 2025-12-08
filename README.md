@@ -1,4 +1,4 @@
-Made with 💙 at <img style="margin-top: -100px" width="200" height="200" alt="image" src="https://github.com/user-attachments/assets/aa0d6d54-e54d-4c6d-803b-5f8667baa98e" />
+Made with 💙 at <a href="https://opensourcepolitics.eu/"><img width="100" height="100" alt="image" src="https://github.com/user-attachments/assets/aa0d6d54-e54d-4c6d-803b-5f8667baa98e" /></a>
 
 
 -> [version française](./README_FR.md)
