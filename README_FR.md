@@ -28,7 +28,7 @@ Ce dépot contient plusieurs widgets selon votre cas d'usage.
 
 Pour installer un de ces widgets, vous pouvez vous référer à [la documentation sur les widgets](https://support.getgrist.com/page-widgets/) et utiliser le widget "custom URL" en collant les URLs fournies plus bas.
 
-## View attachments in Grist
+## Voir des pièces jointes dans Grist
 
 Ce widget affiche tous les documents dans la colonne séléctionnée.
 
